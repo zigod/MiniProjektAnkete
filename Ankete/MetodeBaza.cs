@@ -1,22 +1,36 @@
 ﻿using System;
 using Npgsql;
-using MiniProjektAnkete;
 using System.Collections.Generic;
 using System.Configuration;
 
 namespace Ankete
 {
-    public class Metode
+    public class BazaConn
+    {
+        public static string connect()
+        {
+            var uriString = ConfigurationManager.AppSettings["ELEPHANTSQL_URL"] ?? "postgres://lvxpjcln:RuFqB8afYfKrAbc2VYjP--8nwtZ4NnaA@kandula.db.elephantsql.com:5432/lvxpjcln";
+            var uri = new Uri(uriString);
+            var db = uri.AbsolutePath.Trim('/');
+            var user = uri.UserInfo.Split(':')[0];
+            var passwd = uri.UserInfo.Split(':')[1];
+            var port = uri.Port > 0 ? uri.Port : 5432;
+            var connStr = string.Format("Server={0};Database={1};User Id={2};Password={3};Port={4}",
+                uri.Host, db, user, passwd, port);
+            return connStr;
+        }
+    }
+
+
+    public class MetodeBaza
     {
 
         List<Kraji> krajiList = new List<Kraji>();
 
-        public void izpisKrajev()
+        public List<Kraji> izpisKrajev()
         {
 
             string connect = BazaConn.connect();
-
-            
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
@@ -32,25 +46,11 @@ namespace Ankete
 
                     krajiList.Add(reading);
 
+
                 }
                 con.Close();
+                return krajiList;
             }
-        }
-    }
-
-    public class Kraji
-    {
-        public string ime { get; set; }
-        public int postnaSt { get; set; }
-        public Kraji(string name, int postNum)
-        {
-            this.ime = name;
-            this.postnaSt = postNum;
-        }
-
-        public Kraji(string name)
-        {
-            this.ime = name;
         }
     }
 }

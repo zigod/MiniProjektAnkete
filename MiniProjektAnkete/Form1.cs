@@ -9,14 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using NpgsqlTypes;
+using Ankete;
 
 namespace MiniProjektAnkete
 {
     public partial class Form1 : Form
     {
+        private MetodeBaza db;
+
+
         public Form1()
         {
             InitializeComponent();
+
+            db = new MetodeBaza();
         }
 
         string connect = BazaConn.connect();
@@ -32,17 +38,14 @@ namespace MiniProjektAnkete
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
-            {
-                con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisKrajev()", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                            krajiListBox.Items.Add(reader.GetString(0) + " " + reader.GetInt32(1));
+            List<Kraji> krajiList = db.izpisKrajev();
 
-                }
-                con.Close();
+
+            krajiListBox.Items.Clear();
+
+            foreach (Kraji kraj in krajiList)
+            {
+               krajiListBox.Items.Add(kraj.ime + " | " + kraj.postnaSt);
             }
         }
     }

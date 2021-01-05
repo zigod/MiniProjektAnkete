@@ -5,6 +5,7 @@ using Npgsql;
 using NpgsqlTypes;
 using System.Collections.Specialized;
 using System.Configuration;
+using MiniProjektAnkete;
 
 namespace MiniProjektAnkete
 {
