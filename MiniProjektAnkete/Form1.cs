@@ -51,11 +51,13 @@ namespace MiniProjektAnkete
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string naziv = nazivBox.ToString();
+            string naziv = nazivBox.Text.ToString();
 
-            string mail = mailBox.ToString();
+            string mail = mailBox.Text.ToString();
 
-            string geslo = gesloBox.ToString();
+            string geslo = gesloBox.Text.ToString();
+
+            db.registracija(naziv, mail, geslo);
         }
     }
 }

@@ -51,5 +51,26 @@ namespace Ankete
                 return krajiList;
             }
         }
+
+        public void registracija(string naziv, string email, string geslo)
+        {
+
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT registracija('" + naziv + "', '" + email + "', '" + geslo + "');", con);
+
+                com.ExecuteNonQuery();
+
+                com.Dispose();
+
+                con.Close();
+            }   
+        }
+
+
+
     }
 }
