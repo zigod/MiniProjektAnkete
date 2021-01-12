@@ -48,5 +48,14 @@ namespace MiniProjektAnkete
                krajiListBox.Items.Add(kraj.ime + " | " + kraj.postnaSt);
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string naziv = nazivBox.ToString();
+
+            string mail = mailBox.ToString();
+
+            string geslo = gesloBox.ToString();
+        }
     }
 }

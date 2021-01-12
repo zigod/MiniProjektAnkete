@@ -27,14 +27,15 @@ namespace Ankete
 
         List<Kraji> krajiList = new List<Kraji>();
 
+        string connect = BazaConn.connect();
+
         public List<Kraji> izpisKrajev()
         {
-
-            string connect = BazaConn.connect();
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
+
                 NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisKrajev()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
@@ -45,8 +46,6 @@ namespace Ankete
                     Kraji reading = new Kraji(imeKraja, postnaSt);
 
                     krajiList.Add(reading);
-
-
                 }
                 con.Close();
                 return krajiList;
