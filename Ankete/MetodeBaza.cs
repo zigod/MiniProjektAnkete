@@ -60,7 +60,7 @@ namespace Ankete
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("INSERT INTO registracija(admin_email, password('" + naziv + "', '" + email + "', '" + geslo + "', '"  + naziv + "');", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT registracija('" + email + "', '" + geslo + "', '"  + naziv + "');", con);
     
                 com.ExecuteNonQuery();
 

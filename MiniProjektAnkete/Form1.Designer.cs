@@ -62,7 +62,7 @@
             this.mailBox.Location = new System.Drawing.Point(484, 215);
             this.mailBox.Name = "mailBox";
             this.mailBox.Size = new System.Drawing.Size(100, 20);
-            this.mailBox.TabIndex = 3;
+            this.mailBox.TabIndex = 1;
             // 
             // label2
             // 
@@ -79,7 +79,7 @@
             this.gesloBox.Location = new System.Drawing.Point(484, 274);
             this.gesloBox.Name = "gesloBox";
             this.gesloBox.Size = new System.Drawing.Size(100, 20);
-            this.gesloBox.TabIndex = 5;
+            this.gesloBox.TabIndex = 2;
             // 
             // npgsqlCommand1
             // 
@@ -101,7 +101,7 @@
             this.nazivBox.Location = new System.Drawing.Point(484, 160);
             this.nazivBox.Name = "nazivBox";
             this.nazivBox.Size = new System.Drawing.Size(100, 20);
-            this.nazivBox.TabIndex = 7;
+            this.nazivBox.TabIndex = 0;
             // 
             // label4
             // 
@@ -117,7 +117,7 @@
             this.button1.Location = new System.Drawing.Point(484, 309);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 9;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Registracija";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
