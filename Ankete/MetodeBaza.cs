@@ -52,7 +52,7 @@ namespace Ankete
             }
         }
 
-        public void registracija(string naziv, string email, string geslo)
+        public void registracija(string email, string geslo, string naziv)
         {
 
 
@@ -60,8 +60,8 @@ namespace Ankete
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT registracija('" + naziv + "', '" + email + "', '" + geslo + "');", con);
-
+                NpgsqlCommand com = new NpgsqlCommand("INSERT INTO registracija(admin_email, password('" + naziv + "', '" + email + "', '" + geslo + "', '"  + naziv + "');", con);
+    
                 com.ExecuteNonQuery();
 
                 com.Dispose();
