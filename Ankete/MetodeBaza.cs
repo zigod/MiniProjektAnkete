@@ -22,7 +22,7 @@ namespace Ankete
     }
 
 
-    public class MetodeBaza
+    public class    MetodeBaza
     {
 
         List<Kraji> krajiList = new List<Kraji>();
@@ -69,8 +69,54 @@ namespace Ankete
                 con.Close();
             }   
         }
+        
+        public bool prijavljen { get; set; }
+        public string naziv { get; set; }
+
+        public bool prijava(string email, string geslo)
+        {
 
 
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
 
+                NpgsqlCommand com = new NpgsqlCommand("SELECT prijava('" + email + "', '" + geslo + "');", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    prijavljen = reader.GetBoolean(0);
+                }
+
+                return prijavljen;
+
+                com.Dispose();
+
+                con.Close();
+            }
+        }
+
+        public string prijavaNaziv(string email, string geslo)
+        {
+
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT prijavaNaziv('" + email + "', '" + geslo + "');", con);
+                    NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    naziv = reader.GetString(0);
+                }
+
+                return naziv;
+
+                com.Dispose();
+
+                con.Close();
+            }
+        }
     }
 }

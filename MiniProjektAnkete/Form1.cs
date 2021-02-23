@@ -59,5 +59,14 @@ namespace MiniProjektAnkete
 
             db.registracija(naziv, mail, geslo);
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Prijava prijava = new Prijava();
+
+            prijava.Show();
+
+            this.Hide();
+        }
     }
 }
