@@ -28,5 +28,6 @@ namespace MiniProjektAnkete
         {
             nazivLabel.Text = naziv;
         }
+
     }
 }
