@@ -16,5 +16,10 @@ namespace MINIProjektUPB
         {
             InitializeComponent();
         }
+
+        private void dodajDijakaButton_Click(object sender, EventArgs e)
+        {
+            string Ime = imeBox.Text();
+        }
     }
 }
