@@ -14,12 +14,13 @@ namespace MINIProjektUPB
     {
         public main(string naziv)
         {
-            polnjenje();
             InitializeComponent();
+            polnjenje();
         }
 
         private void polnjenje()
         {
+            krajBox.Items.Clear();
             List<Kraji> kraj = baza.izpisKrajev();
 
             foreach (Kraji x in kraj)
@@ -27,6 +28,12 @@ namespace MINIProjektUPB
                 string skupi = x.Ime + " | " + x.PostnaSt.ToString();
 
                 krajBox.Items.Add(skupi);
+            }
+
+            List<Dijaki> dijaki = baza.izpisDijakov();
+            foreach (Dijaki d in dijaki)
+            {
+                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj });
             }
         }
 
@@ -38,8 +45,25 @@ namespace MINIProjektUPB
 
             string sola = solaBox.Text;
 
+            string krajANDpostna = (string)krajBox.SelectedItem;
+
             string datum = datumPicker.Value.ToString("yyyy-MM-dd");
 
+            string[] krajPosta = krajANDpostna.Split(new string[] { " | " }, StringSplitOptions.None);
+
+            bool potrditev = baza.dodajDijaka(ime, priimek, sola, datum, krajPosta[0], krajPosta[1]);
+
+            if(potrditev == false)
+            {
+                MessageBox.Show("Dodajanje ni bilo uspešno. Dijak je že v sistemu ali pa ste se zatipkali.");
+            }
+            else
+            {
+                imeBox.Clear();
+                priimekBox.Clear();
+                solaBox.Clear();
+                krajBox.SelectedIndex = 0;
+            }
 
         }
     }

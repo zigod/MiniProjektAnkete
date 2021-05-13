@@ -35,7 +35,7 @@ namespace MINIProjektUPB
                 while (reader.Read())
                 {
                     string imeKraja = reader.GetString(0);
-                    int postnaSt = reader.GetInt32(1);
+                    string postnaSt = reader.GetString(1);
 
                     Kraji reading = new Kraji(imeKraja, postnaSt);
 
@@ -107,6 +107,60 @@ namespace MINIProjektUPB
                 con.Close();
 
                 return naziv;
+            }
+        }
+
+        public static bool dodajDijaka(string ime, string priimek, string sola, string datum, string kraj, string postna_st)
+        {
+            bool potrditev = false;
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT vnesiDijaka('" + ime + "', '" + priimek + "', '" + sola + "', '" + datum + "', '" + kraj + "', '" + postna_st + "');", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    potrditev = reader.GetBoolean(0);
+                }
+
+
+
+                com.Dispose();
+
+                con.Close();
+
+                return potrditev;
+            }
+        }
+
+        public static List<Dijaki> izpisDijakov()
+        {
+            List<Dijaki> dijakiList = new List<Dijaki>();
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisDijakov()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string ime = reader.GetString(1);
+                    string priimek = reader.GetString(2);
+                    string sola = reader.GetString(3);
+                    string datum = reader.GetTimeStamp(4).ToString();
+                    string kraj = reader.GetString(5);
+
+                    string[] dat = datum.Split(' ');
+
+
+                    Dijaki reading = new Dijaki(id, ime, priimek, sola, dat[0], kraj);
+
+                    dijakiList.Add(reading);
+                }
+                con.Close();
+                return dijakiList;
             }
         }
     }

@@ -40,7 +40,7 @@ namespace MINIProjektUPB
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.naslovBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dijakiGridView = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Priimek = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,7 +51,6 @@ namespace MINIProjektUPB
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dodajDijakaButton = new System.Windows.Forms.Button();
             this.datumPicker = new System.Windows.Forms.DateTimePicker();
-            this.krajBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,10 +60,11 @@ namespace MINIProjektUPB
             this.solaBox = new System.Windows.Forms.TextBox();
             this.priimekBox = new System.Windows.Forms.TextBox();
             this.imeBox = new System.Windows.Forms.TextBox();
+            this.krajBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dijakiGridView)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +79,7 @@ namespace MINIProjektUPB
             this.tabControl1.Location = new System.Drawing.Point(1, 1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(775, 647);
+            this.tabControl1.Size = new System.Drawing.Size(828, 647);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -170,24 +170,24 @@ namespace MINIProjektUPB
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dijakiGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(836, 558);
+            this.tabPage2.Size = new System.Drawing.Size(820, 621);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "PRIKAZ VSEH DIJAKOV";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dijakiGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dijakiGridView.AllowUserToAddRows = false;
+            this.dijakiGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dijakiGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dijakiGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dijakiGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Ime,
             this.Priimek,
@@ -195,10 +195,10 @@ namespace MINIProjektUPB
             this.datum_roj,
             this.kraj,
             this.vec});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(825, 546);
-            this.dataGridView1.TabIndex = 0;
+            this.dijakiGridView.Location = new System.Drawing.Point(6, 6);
+            this.dijakiGridView.Name = "dijakiGridView";
+            this.dijakiGridView.Size = new System.Drawing.Size(811, 546);
+            this.dijakiGridView.TabIndex = 0;
             // 
             // ID
             // 
@@ -237,9 +237,9 @@ namespace MINIProjektUPB
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.krajBox);
             this.tabPage3.Controls.Add(this.dodajDijakaButton);
             this.tabPage3.Controls.Add(this.datumPicker);
-            this.tabPage3.Controls.Add(this.krajBox);
             this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.label8);
@@ -273,14 +273,6 @@ namespace MINIProjektUPB
             this.datumPicker.Name = "datumPicker";
             this.datumPicker.Size = new System.Drawing.Size(200, 20);
             this.datumPicker.TabIndex = 12;
-            // 
-            // krajBox
-            // 
-            this.krajBox.FormattingEnabled = true;
-            this.krajBox.Location = new System.Drawing.Point(318, 286);
-            this.krajBox.Name = "krajBox";
-            this.krajBox.Size = new System.Drawing.Size(200, 21);
-            this.krajBox.TabIndex = 11;
             // 
             // label10
             // 
@@ -358,11 +350,19 @@ namespace MINIProjektUPB
             this.imeBox.Size = new System.Drawing.Size(200, 20);
             this.imeBox.TabIndex = 0;
             // 
+            // krajBox
+            // 
+            this.krajBox.FormattingEnabled = true;
+            this.krajBox.Location = new System.Drawing.Point(318, 286);
+            this.krajBox.Name = "krajBox";
+            this.krajBox.Size = new System.Drawing.Size(200, 21);
+            this.krajBox.TabIndex = 14;
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 649);
+            this.ClientSize = new System.Drawing.Size(831, 649);
             this.Controls.Add(this.tabControl1);
             this.Name = "main";
             this.Text = "main";
@@ -370,7 +370,7 @@ namespace MINIProjektUPB
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dijakiGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -390,7 +390,7 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox naslovBox;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dijakiGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Priimek;
@@ -401,7 +401,6 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button dodajDijakaButton;
         private System.Windows.Forms.DateTimePicker datumPicker;
-        private System.Windows.Forms.ComboBox krajBox;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
@@ -411,5 +410,6 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TextBox solaBox;
         private System.Windows.Forms.TextBox priimekBox;
         private System.Windows.Forms.TextBox imeBox;
+        private System.Windows.Forms.ComboBox krajBox;
     }
 }

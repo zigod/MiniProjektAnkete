@@ -9,9 +9,9 @@ namespace MINIProjektUPB
     class Kraji
     {
         public string Ime { get; set; }
-        public int PostnaSt { get; set; }
+        public string PostnaSt { get; set; }
 
-        public Kraji(string ime, int postnaSt)
+        public Kraji(string ime, string postnaSt)
         {
             Ime = ime;
             PostnaSt = postnaSt;

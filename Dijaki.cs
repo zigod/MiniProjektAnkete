@@ -8,19 +8,19 @@ namespace MINIProjektUPB
 {
     class Dijaki
     {
-        private int Id { get; set; }
-        private string Ime { get; set; }
-        private string Priimek { get; set; }
-        private string Sola { get; set; }
-        private DateTime Datum { get; set; }
-        private string Kraj { get; set; }
+        public int Id { get; set; }
+        public string Ime { get; set; }
+        public string Priimek { get; set; }
+        public string Sola { get; set; }
+        public string Datum { get; set; }
+        public string Kraj { get; set; }
 
-        public Dijaki(int id, string ime, string priimek, string sola, DateTime datum, string kraj)
+        public Dijaki(int id, string ime, string priimek, string sola, string datum, string kraj)
         {
             Id = id;
             Ime = ime;
             Priimek = priimek;
-            Sola = Sola;
+            Sola = sola;
             Datum = datum;
             Kraj = kraj;
         }
