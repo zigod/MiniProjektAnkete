@@ -31,6 +31,8 @@ namespace MiniProjektAnkete
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dodajAnketoButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,8 +40,6 @@ namespace MiniProjektAnkete
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.naslovBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,10 +48,24 @@ namespace MiniProjektAnkete
             this.datum_roj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vec = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dodajDijakaButton = new System.Windows.Forms.Button();
+            this.datumPicker = new System.Windows.Forms.DateTimePicker();
+            this.krajBox = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.solaBox = new System.Windows.Forms.TextBox();
+            this.priimekBox = new System.Windows.Forms.TextBox();
+            this.imeBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -61,6 +75,7 @@ namespace MiniProjektAnkete
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(2, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -69,7 +84,7 @@ namespace MiniProjektAnkete
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.dodajAnketoButton);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
@@ -84,6 +99,26 @@ namespace MiniProjektAnkete
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DODAJANJE ANKET";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // dodajAnketoButton
+            // 
+            this.dodajAnketoButton.Location = new System.Drawing.Point(298, 322);
+            this.dodajAnketoButton.Name = "dodajAnketoButton";
+            this.dodajAnketoButton.Size = new System.Drawing.Size(183, 23);
+            this.dodajAnketoButton.TabIndex = 10;
+            this.dodajAnketoButton.Text = "DODAJ";
+            this.dodajAnketoButton.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(63, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(674, 76);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "DODAJANJE ANKET";
             // 
             // label3
             // 
@@ -145,25 +180,6 @@ namespace MiniProjektAnkete
             this.tabPage2.Text = "PRIKAZ VSEH DIJAKOV";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(220, 34);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(345, 39);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "DODAJANJE ANKET";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(298, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "DODAJ";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -220,6 +236,128 @@ namespace MiniProjektAnkete
             this.vec.HeaderText = "Več";
             this.vec.Name = "vec";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dodajDijakaButton);
+            this.tabPage3.Controls.Add(this.datumPicker);
+            this.tabPage3.Controls.Add(this.krajBox);
+            this.tabPage3.Controls.Add(this.label10);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.solaBox);
+            this.tabPage3.Controls.Add(this.priimekBox);
+            this.tabPage3.Controls.Add(this.imeBox);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(836, 558);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "DODAJANJE DIJAKOV";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dodajDijakaButton
+            // 
+            this.dodajDijakaButton.Location = new System.Drawing.Point(318, 370);
+            this.dodajDijakaButton.Name = "dodajDijakaButton";
+            this.dodajDijakaButton.Size = new System.Drawing.Size(200, 23);
+            this.dodajDijakaButton.TabIndex = 13;
+            this.dodajDijakaButton.Text = "DODAJ";
+            this.dodajDijakaButton.UseVisualStyleBackColor = true;
+            // 
+            // datumPicker
+            // 
+            this.datumPicker.Location = new System.Drawing.Point(318, 325);
+            this.datumPicker.Name = "datumPicker";
+            this.datumPicker.Size = new System.Drawing.Size(200, 20);
+            this.datumPicker.TabIndex = 12;
+            // 
+            // krajBox
+            // 
+            this.krajBox.FormattingEnabled = true;
+            this.krajBox.Location = new System.Drawing.Point(318, 286);
+            this.krajBox.Name = "krajBox";
+            this.krajBox.Size = new System.Drawing.Size(200, 21);
+            this.krajBox.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(271, 204);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 13);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Priimek:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(237, 325);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Datum rojstva:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(277, 286);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(28, 13);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Kraj:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(281, 245);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Šola:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(285, 167);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Ime:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(56, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(738, 76);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "DODAJANJE DIJAKOV";
+            // 
+            // solaBox
+            // 
+            this.solaBox.Location = new System.Drawing.Point(318, 245);
+            this.solaBox.Name = "solaBox";
+            this.solaBox.Size = new System.Drawing.Size(200, 20);
+            this.solaBox.TabIndex = 2;
+            // 
+            // priimekBox
+            // 
+            this.priimekBox.Location = new System.Drawing.Point(318, 204);
+            this.priimekBox.Name = "priimekBox";
+            this.priimekBox.Size = new System.Drawing.Size(200, 20);
+            this.priimekBox.TabIndex = 1;
+            // 
+            // imeBox
+            // 
+            this.imeBox.Location = new System.Drawing.Point(318, 167);
+            this.imeBox.Name = "imeBox";
+            this.imeBox.Size = new System.Drawing.Size(200, 20);
+            this.imeBox.TabIndex = 0;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +372,8 @@ namespace MiniProjektAnkete
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -249,7 +389,7 @@ namespace MiniProjektAnkete
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox naslovBox;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button dodajAnketoButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -259,5 +399,18 @@ namespace MiniProjektAnkete
         private System.Windows.Forms.DataGridViewTextBoxColumn datum_roj;
         private System.Windows.Forms.DataGridViewTextBoxColumn kraj;
         private System.Windows.Forms.DataGridViewButtonColumn vec;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button dodajDijakaButton;
+        private System.Windows.Forms.DateTimePicker datumPicker;
+        private System.Windows.Forms.ComboBox krajBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox solaBox;
+        private System.Windows.Forms.TextBox priimekBox;
+        private System.Windows.Forms.TextBox imeBox;
     }
 }

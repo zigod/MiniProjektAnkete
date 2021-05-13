@@ -1,11 +1,13 @@
 ﻿using System;
-using Npgsql;
 using System.Collections.Generic;
-using System.Configuration;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MiniProjektAnkete;
 
-namespace Ankete
+namespace MiniProjektAnkete
 {
-    public class BazaConn
+    public class Baza
     {
         public static string connect()
         {
@@ -19,20 +21,11 @@ namespace Ankete
                 uri.Host, db, user, passwd, port);
             return connStr;
         }
-    }
 
-
-    public class    MetodeBaza
-    {
-
-        List<Kraji> krajiList = new List<Kraji>();
-
-        string connect = BazaConn.connect();
-
-        public List<Kraji> izpisKrajev()
+        public static List<Kraji> izpisKrajev()
         {
-
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            List<Kraji> krajiList = new List<Kraji>();
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
             {
                 con.Open();
 
@@ -42,7 +35,7 @@ namespace Ankete
                 {
                     string imeKraja = reader.GetString(0);
                     int postnaSt = reader.GetInt32(1);
-
+                   
                     Kraji reading = new Kraji(imeKraja, postnaSt);
 
                     krajiList.Add(reading);
@@ -52,32 +45,28 @@ namespace Ankete
             }
         }
 
-        public void registracija(string email, string geslo, string naziv)
+        public static void registracija(string email, string geslo, string naziv)
         {
 
 
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT registracija('" + email + "', '" + geslo + "', '"  + naziv + "');", con);
-    
+                NpgsqlCommand com = new NpgsqlCommand("SELECT registracija('" + email + "', '" + geslo + "', '" + naziv + "');", con);
+
                 com.ExecuteNonQuery();
 
                 com.Dispose();
 
                 con.Close();
-            }   
+            }
         }
-        
-        public bool prijavljen { get; set; }
-        public string naziv { get; set; }
 
-        public bool prijava(string email, string geslo)
+        public static bool prijava(string email, string geslo)
         {
-
-
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            bool prijavljen = false;
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
             {
                 con.Open();
 
@@ -88,34 +77,35 @@ namespace Ankete
                     prijavljen = reader.GetBoolean(0);
                 }
 
-                return prijavljen;
-
                 com.Dispose();
 
                 con.Close();
+
+                return prijavljen;
             }
         }
 
-        public string prijavaNaziv(string email, string geslo)
+        public static string prijavaNaziv(string email, string geslo)
         {
-
-
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            string naziv = "";
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
             {
                 con.Open();
 
                 NpgsqlCommand com = new NpgsqlCommand("SELECT prijavaNaziv('" + email + "', '" + geslo + "');", con);
-                    NpgsqlDataReader reader = com.ExecuteReader();
+                NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
                     naziv = reader.GetString(0);
                 }
 
-                return naziv;
+
 
                 com.Dispose();
 
                 con.Close();
+
+                return naziv;
             }
         }
     }

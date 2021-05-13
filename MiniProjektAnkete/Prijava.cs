@@ -13,14 +13,10 @@ namespace MiniProjektAnkete
 {
     public partial class Prijava : Form
     {
-        private MetodeBaza db;
 
         public Prijava()
         {
             InitializeComponent();
-
-            db = new MetodeBaza();
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,9 +26,9 @@ namespace MiniProjektAnkete
             string geslo = gesloTextBox.Text;
 
 
-            bool prijavljen = db.prijava(gmail, geslo);
+            bool prijavljen = baza.prijava(gmail, geslo);
 
-            string naziv = db.prijavaNaziv(gmail, geslo);
+            string naziv = baza.prijavaNaziv(gmail, geslo);
 
             if(prijavljen == false)
             {
@@ -53,6 +49,11 @@ namespace MiniProjektAnkete
                 this.Hide();
             }
 
+
+        }
+
+        private void Prijava_Load(object sender, EventArgs e)
+        {
 
         }
     }

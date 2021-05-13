@@ -9,41 +9,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using NpgsqlTypes;
-using Ankete;
+using MiniProjektAnkete;
+using MiniProjek;
 
 namespace MiniProjektAnkete
 {
     public partial class Form1 : Form
     {
-        private MetodeBaza db;
 
 
         public Form1()
         {
             InitializeComponent();
-
-            db = new MetodeBaza();
         }
-
-        string connect = BazaConn.connect();
 
         public void openConn()
         {
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
-            {
-                con.Open();
-                con.Close();
-            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            List<Kraji> krajiList = db.izpisKrajev();
-
+            List<Kraji> krajiListt = Baza.izpisKrajev();
 
             krajiListBox.Items.Clear();
 
-            foreach (Kraji kraj in krajiList)
+            foreach (Kraji kraj in krajiListt)
             {
                krajiListBox.Items.Add(kraj.ime + " | " + kraj.postnaSt);
             }
@@ -57,7 +47,7 @@ namespace MiniProjektAnkete
 
             string geslo = gesloBox.Text.ToString();
 
-            db.registracija(naziv, mail, geslo);
+            Baza.registracija(naziv, mail, geslo);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

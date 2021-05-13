@@ -102,6 +102,7 @@ namespace MiniProjektAnkete
             this.Controls.Add(this.label1);
             this.Name = "Prijava";
             this.Text = "Prijava";
+            this.Load += new System.EventHandler(this.Prijava_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

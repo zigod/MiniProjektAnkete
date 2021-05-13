@@ -26,8 +26,11 @@ namespace MiniProjektAnkete
 
         private void Main_Load(object sender, EventArgs e)
         {
-            nazivLabel.Text = naziv;
         }
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
