@@ -14,12 +14,33 @@ namespace MINIProjektUPB
     {
         public main(string naziv)
         {
+            polnjenje();
             InitializeComponent();
+        }
+
+        private void polnjenje()
+        {
+            List<Kraji> kraj = baza.izpisKrajev();
+
+            foreach (Kraji x in kraj)
+            {
+                string skupi = x.Ime + " | " + x.PostnaSt.ToString();
+
+                krajBox.Items.Add(skupi);
+            }
         }
 
         private void dodajDijakaButton_Click(object sender, EventArgs e)
         {
-            string Ime = imeBox.Text();
+            string ime = imeBox.Text;
+
+            string priimek = priimekBox.Text;
+
+            string sola = solaBox.Text;
+
+            string datum = datumPicker.Value.ToString("yyyy-MM-dd");
+
+
         }
     }
 }

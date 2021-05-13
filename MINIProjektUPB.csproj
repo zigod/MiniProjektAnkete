@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="baza.cs" />
+    <Compile Include="Dijaki.cs" />
     <Compile Include="Kraji.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
