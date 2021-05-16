@@ -12,10 +12,12 @@ namespace MINIProjektUPB
 {
     public partial class main : Form
     {
+        public string naziv_;
         public main(string naziv)
         {
             InitializeComponent();
             polnjenje();
+            naziv_ = naziv;
         }
 
         private void polnjenje()
@@ -33,7 +35,7 @@ namespace MINIProjektUPB
             List<Dijaki> dijaki = baza.izpisDijakov();
             foreach (Dijaki d in dijaki)
             {
-                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj });
+                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj, "Več" });
             }
         }
 
@@ -65,6 +67,48 @@ namespace MINIProjektUPB
                 krajBox.SelectedIndex = 0;
             }
 
+        }
+
+        private void dodajAnketoButton_Click(object sender, EventArgs e)
+        {
+            string naslov = naslovBox.Text;
+            string URL = urlBox.Text;
+            string opis = opisBox.Text;
+            Ankete anketa = new Ankete(naslov, URL, opis);
+
+            MessageBox.Show(naziv_);
+            bool preveritev = baza.dodajAnketo(anketa.naslov, anketa.url, anketa.opis, naziv_);
+            
+            if (preveritev == false)
+            {
+                naslovBox.Clear();
+                urlBox.Clear();
+                opisBox.Clear();
+                MessageBox.Show("Dodajanje ankete ni bilo uspešno. ");
+            }
+            else if (preveritev == true)
+            {
+                naslovBox.Clear();
+                urlBox.Clear();
+                opisBox.Clear();
+                MessageBox.Show("Dodajanje ankete je bilo uspešno. ");
+            }
+        }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+            nazivLabel1.Text = "Dobrodošli " + naziv_;
+            nazivLabel2.Text = "Dobrodošli " + naziv_;
+            nazivLabel3.Text = "Dobrodošli " + naziv_;
+        }
+
+        private void dijakiGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.ColumnIndex == 6)
+            {
+                int id = Convert.ToInt32(dijakiGridView.Rows[e.RowIndex].Cells[0].Value);
+                
+            }
         }
     }
 }

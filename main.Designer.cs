@@ -36,8 +36,8 @@ namespace MINIProjektUPB
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.opisBox = new System.Windows.Forms.RichTextBox();
+            this.urlBox = new System.Windows.Forms.TextBox();
             this.naslovBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dijakiGridView = new System.Windows.Forms.DataGridView();
@@ -49,6 +49,7 @@ namespace MINIProjektUPB
             this.kraj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vec = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.krajBox = new System.Windows.Forms.ComboBox();
             this.dodajDijakaButton = new System.Windows.Forms.Button();
             this.datumPicker = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -60,7 +61,9 @@ namespace MINIProjektUPB
             this.solaBox = new System.Windows.Forms.TextBox();
             this.priimekBox = new System.Windows.Forms.TextBox();
             this.imeBox = new System.Windows.Forms.TextBox();
-            this.krajBox = new System.Windows.Forms.ComboBox();
+            this.nazivLabel1 = new System.Windows.Forms.Label();
+            this.nazivLabel2 = new System.Windows.Forms.Label();
+            this.nazivLabel3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -70,32 +73,31 @@ namespace MINIProjektUPB
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(1, 1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(828, 647);
+            this.tabControl1.Size = new System.Drawing.Size(831, 649);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.nazivLabel1);
             this.tabPage1.Controls.Add(this.dodajAnketoButton);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.richTextBox1);
-            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.opisBox);
+            this.tabPage1.Controls.Add(this.urlBox);
             this.tabPage1.Controls.Add(this.naslovBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(767, 621);
+            this.tabPage1.Size = new System.Drawing.Size(823, 623);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DODAJANJE ANKET";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -108,6 +110,7 @@ namespace MINIProjektUPB
             this.dodajAnketoButton.TabIndex = 10;
             this.dodajAnketoButton.Text = "DODAJ";
             this.dodajAnketoButton.UseVisualStyleBackColor = true;
+            this.dodajAnketoButton.Click += new System.EventHandler(this.dodajAnketoButton_Click);
             // 
             // label4
             // 
@@ -146,20 +149,20 @@ namespace MINIProjektUPB
             this.label1.TabIndex = 6;
             this.label1.Text = "Naslov:";
             // 
-            // richTextBox1
+            // opisBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(298, 193);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(183, 96);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
+            this.opisBox.Location = new System.Drawing.Point(298, 193);
+            this.opisBox.Name = "opisBox";
+            this.opisBox.Size = new System.Drawing.Size(183, 96);
+            this.opisBox.TabIndex = 5;
+            this.opisBox.Text = "";
             // 
-            // textBox3
+            // urlBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(298, 145);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(183, 20);
-            this.textBox3.TabIndex = 2;
+            this.urlBox.Location = new System.Drawing.Point(298, 145);
+            this.urlBox.Name = "urlBox";
+            this.urlBox.Size = new System.Drawing.Size(183, 20);
+            this.urlBox.TabIndex = 2;
             // 
             // naslovBox
             // 
@@ -170,11 +173,12 @@ namespace MINIProjektUPB
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.nazivLabel2);
             this.tabPage2.Controls.Add(this.dijakiGridView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(820, 621);
+            this.tabPage2.Size = new System.Drawing.Size(823, 623);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "PRIKAZ VSEH DIJAKOV";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -195,10 +199,11 @@ namespace MINIProjektUPB
             this.datum_roj,
             this.kraj,
             this.vec});
-            this.dijakiGridView.Location = new System.Drawing.Point(6, 6);
+            this.dijakiGridView.Location = new System.Drawing.Point(6, 35);
             this.dijakiGridView.Name = "dijakiGridView";
-            this.dijakiGridView.Size = new System.Drawing.Size(811, 546);
+            this.dijakiGridView.Size = new System.Drawing.Size(814, 519);
             this.dijakiGridView.TabIndex = 0;
+            this.dijakiGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dijakiGridView_CellContentClick);
             // 
             // ID
             // 
@@ -237,6 +242,7 @@ namespace MINIProjektUPB
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.nazivLabel3);
             this.tabPage3.Controls.Add(this.krajBox);
             this.tabPage3.Controls.Add(this.dodajDijakaButton);
             this.tabPage3.Controls.Add(this.datumPicker);
@@ -252,10 +258,18 @@ namespace MINIProjektUPB
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(767, 621);
+            this.tabPage3.Size = new System.Drawing.Size(823, 623);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "DODAJANJE DIJAKOV";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // krajBox
+            // 
+            this.krajBox.FormattingEnabled = true;
+            this.krajBox.Location = new System.Drawing.Point(318, 286);
+            this.krajBox.Name = "krajBox";
+            this.krajBox.Size = new System.Drawing.Size(200, 21);
+            this.krajBox.TabIndex = 14;
             // 
             // dodajDijakaButton
             // 
@@ -350,13 +364,35 @@ namespace MINIProjektUPB
             this.imeBox.Size = new System.Drawing.Size(200, 20);
             this.imeBox.TabIndex = 0;
             // 
-            // krajBox
+            // nazivLabel1
             // 
-            this.krajBox.FormattingEnabled = true;
-            this.krajBox.Location = new System.Drawing.Point(318, 286);
-            this.krajBox.Name = "krajBox";
-            this.krajBox.Size = new System.Drawing.Size(200, 21);
-            this.krajBox.TabIndex = 14;
+            this.nazivLabel1.AutoSize = true;
+            this.nazivLabel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nazivLabel1.Location = new System.Drawing.Point(779, 3);
+            this.nazivLabel1.Name = "nazivLabel1";
+            this.nazivLabel1.Size = new System.Drawing.Size(41, 13);
+            this.nazivLabel1.TabIndex = 11;
+            this.nazivLabel1.Text = "label11";
+            // 
+            // nazivLabel2
+            // 
+            this.nazivLabel2.AutoSize = true;
+            this.nazivLabel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nazivLabel2.Location = new System.Drawing.Point(779, 3);
+            this.nazivLabel2.Name = "nazivLabel2";
+            this.nazivLabel2.Size = new System.Drawing.Size(41, 13);
+            this.nazivLabel2.TabIndex = 12;
+            this.nazivLabel2.Text = "label12";
+            // 
+            // nazivLabel3
+            // 
+            this.nazivLabel3.AutoSize = true;
+            this.nazivLabel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.nazivLabel3.Location = new System.Drawing.Point(779, 3);
+            this.nazivLabel3.Name = "nazivLabel3";
+            this.nazivLabel3.Size = new System.Drawing.Size(41, 13);
+            this.nazivLabel3.TabIndex = 15;
+            this.nazivLabel3.Text = "label13";
             // 
             // main
             // 
@@ -366,10 +402,12 @@ namespace MINIProjektUPB
             this.Controls.Add(this.tabControl1);
             this.Name = "main";
             this.Text = "main";
+            this.Load += new System.EventHandler(this.main_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dijakiGridView)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -386,8 +424,8 @@ namespace MINIProjektUPB
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.RichTextBox opisBox;
+        private System.Windows.Forms.TextBox urlBox;
         private System.Windows.Forms.TextBox naslovBox;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dijakiGridView;
@@ -411,5 +449,8 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TextBox priimekBox;
         private System.Windows.Forms.TextBox imeBox;
         private System.Windows.Forms.ComboBox krajBox;
+        private System.Windows.Forms.Label nazivLabel1;
+        private System.Windows.Forms.Label nazivLabel2;
+        private System.Windows.Forms.Label nazivLabel3;
     }
 }

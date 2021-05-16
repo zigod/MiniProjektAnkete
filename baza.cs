@@ -163,5 +163,29 @@ namespace MINIProjektUPB
                 return dijakiList;
             }
         }
+
+        public static bool dodajAnketo(string naslov, string url, string opis, string naziv)
+        {
+            bool potrditev = false;
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT dodajAnketo('" + naslov + "', '" + url + "', '" + opis + "', '" + naziv + "');", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    potrditev = reader.GetBoolean(0);
+                }
+
+
+
+                com.Dispose();
+
+                con.Close();
+
+                return potrditev;
+            }
+        }
     }
 }
