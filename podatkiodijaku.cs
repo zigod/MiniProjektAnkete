@@ -12,16 +12,17 @@ namespace MINIProjektUPB
 {
     public partial class podatkiodijaku : Form
     {
-        public int ajdi;
+        public int id_d;
         public podatkiodijaku(int id_)
         {
             InitializeComponent();
             polnjenje();
-            ajdi = id_;
+            id_d = id_;
         }
 
         private void polnjenje()
         {
+            anketeDijakGrid.Rows.Clear();
             krajBox.Items.Clear();
             List<Kraji> kraj = baza.izpisKrajev();
 
@@ -32,7 +33,7 @@ namespace MINIProjektUPB
                 krajBox.Items.Add(skupi);
             }
 
-            List<Ankete> anketa = baza.izpisAnketDijak(ajdi);
+            List<Ankete> anketa = baza.izpisAnketDijak(id_d);
             //                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj, "Več" });
             foreach (Ankete a in anketa)
             {
@@ -66,7 +67,7 @@ namespace MINIProjektUPB
 
         private void dodajAnketeDijaku_Click(object sender, EventArgs e)
         {
-            anketedijaka ank = new anketedijaka();
+            anketedijaka ank = new anketedijaka(id_d);
             ank.ShowDialog();
         }
     }

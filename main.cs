@@ -22,6 +22,7 @@ namespace MINIProjektUPB
 
         private void polnjenje()
         {
+            dijakiGridView.Rows.Clear();
             krajBox.Items.Clear();
             List<Kraji> kraj = baza.izpisKrajev();
 

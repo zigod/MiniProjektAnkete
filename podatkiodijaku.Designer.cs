@@ -90,7 +90,7 @@ namespace MINIProjektUPB
             this.datum,
             this.izbrisi});
             this.anketeDijakGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.anketeDijakGrid.Location = new System.Drawing.Point(0, 365);
+            this.anketeDijakGrid.Location = new System.Drawing.Point(0, 386);
             this.anketeDijakGrid.Name = "anketeDijakGrid";
             this.anketeDijakGrid.Size = new System.Drawing.Size(856, 253);
             this.anketeDijakGrid.TabIndex = 4;
@@ -189,6 +189,7 @@ namespace MINIProjektUPB
             // 
             // urediButton
             // 
+            this.urediButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.urediButton.Location = new System.Drawing.Point(539, 40);
             this.urediButton.Name = "urediButton";
             this.urediButton.Size = new System.Drawing.Size(190, 85);
@@ -208,9 +209,10 @@ namespace MINIProjektUPB
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(328, 337);
+            this.label1.Location = new System.Drawing.Point(225, 358);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(489, 25);
             this.label1.TabIndex = 18;
@@ -218,7 +220,8 @@ namespace MINIProjektUPB
             // 
             // dodajAnketeDijaku
             // 
-            this.dodajAnketeDijaku.Location = new System.Drawing.Point(539, 203);
+            this.dodajAnketeDijaku.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dodajAnketeDijaku.Location = new System.Drawing.Point(539, 224);
             this.dodajAnketeDijaku.Name = "dodajAnketeDijaku";
             this.dodajAnketeDijaku.Size = new System.Drawing.Size(190, 92);
             this.dodajAnketeDijaku.TabIndex = 19;
@@ -236,7 +239,7 @@ namespace MINIProjektUPB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(856, 618);
+            this.ClientSize = new System.Drawing.Size(856, 639);
             this.Controls.Add(this.dodajAnketeDijaku);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.potrdiButton);

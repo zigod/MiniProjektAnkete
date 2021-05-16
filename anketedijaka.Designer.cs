@@ -30,29 +30,39 @@ namespace MINIProjektUPB
         private void InitializeComponent()
         {
             this.anketeGrid = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.searchBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dodaj = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.anketeGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // anketeGrid
             // 
             this.anketeGrid.AllowUserToAddRows = false;
-            this.anketeGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.anketeGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.anketeGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.naslov,
+            this.url,
+            this.opis,
+            this.dodaj});
             this.anketeGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.anketeGrid.Location = new System.Drawing.Point(0, 93);
             this.anketeGrid.Name = "anketeGrid";
-            this.anketeGrid.Size = new System.Drawing.Size(800, 357);
+            this.anketeGrid.Size = new System.Drawing.Size(847, 357);
             this.anketeGrid.TabIndex = 0;
             // 
-            // textBox1
+            // searchBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 43);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 20);
-            this.textBox1.TabIndex = 1;
+            this.searchBox.Location = new System.Drawing.Point(12, 43);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(228, 20);
+            this.searchBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -71,15 +81,51 @@ namespace MINIProjektUPB
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Išči";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 151;
+            // 
+            // naslov
+            // 
+            this.naslov.HeaderText = "Naslov";
+            this.naslov.Name = "naslov";
+            this.naslov.ReadOnly = true;
+            this.naslov.Width = 152;
+            // 
+            // url
+            // 
+            this.url.HeaderText = "URL";
+            this.url.Name = "url";
+            this.url.ReadOnly = true;
+            this.url.Width = 151;
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.ReadOnly = true;
+            this.opis.Width = 200;
+            // 
+            // dodaj
+            // 
+            this.dodaj.HeaderText = "Dodaj";
+            this.dodaj.Name = "dodaj";
+            this.dodaj.ReadOnly = true;
+            this.dodaj.Width = 151;
             // 
             // anketedijaka
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(847, 450);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.anketeGrid);
             this.Name = "anketedijaka";
             this.Text = "Ankete, ki jih želite dodati dijaku";
@@ -92,8 +138,13 @@ namespace MINIProjektUPB
         #endregion
 
         private System.Windows.Forms.DataGridView anketeGrid;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naslov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn url;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opis;
+        private System.Windows.Forms.DataGridViewButtonColumn dodaj;
     }
 }
