@@ -107,7 +107,10 @@ namespace MINIProjektUPB
             if(e.ColumnIndex == 6)
             {
                 int id = Convert.ToInt32(dijakiGridView.Rows[e.RowIndex].Cells[0].Value);
-                
+
+                podatkiodijaku pod = new podatkiodijaku(id);
+                pod.ShowDialog();
+
             }
         }
     }

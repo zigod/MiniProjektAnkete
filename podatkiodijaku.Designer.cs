@@ -32,7 +32,12 @@ namespace MINIProjektUPB
             this.imeBox = new System.Windows.Forms.TextBox();
             this.priimekBox = new System.Windows.Forms.TextBox();
             this.solaBox = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.anketeDijakGrid = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.krajBox = new System.Windows.Forms.ComboBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -42,12 +47,10 @@ namespace MINIProjektUPB
             this.label6 = new System.Windows.Forms.Label();
             this.urediButton = new System.Windows.Forms.Button();
             this.potrdiButton = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dodajAnketeDijaku = new System.Windows.Forms.Button();
+            this.izbrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.anketeDijakGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // imeBox
@@ -74,22 +77,53 @@ namespace MINIProjektUPB
             this.solaBox.Size = new System.Drawing.Size(200, 20);
             this.solaBox.TabIndex = 2;
             // 
-            // dataGridView1
+            // anketeDijakGrid
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.anketeDijakGrid.AllowUserToAddRows = false;
+            this.anketeDijakGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.anketeDijakGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.anketeDijakGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.naslov,
             this.URL,
             this.opis,
-            this.datum});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 365);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(856, 253);
-            this.dataGridView1.TabIndex = 4;
+            this.datum,
+            this.izbrisi});
+            this.anketeDijakGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.anketeDijakGrid.Location = new System.Drawing.Point(0, 365);
+            this.anketeDijakGrid.Name = "anketeDijakGrid";
+            this.anketeDijakGrid.Size = new System.Drawing.Size(856, 253);
+            this.anketeDijakGrid.TabIndex = 4;
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // naslov
+            // 
+            this.naslov.HeaderText = "Naslov";
+            this.naslov.Name = "naslov";
+            this.naslov.ReadOnly = true;
+            // 
+            // URL
+            // 
+            this.URL.HeaderText = "URL";
+            this.URL.Name = "URL";
+            this.URL.ReadOnly = true;
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.ReadOnly = true;
+            // 
+            // datum
+            // 
+            this.datum.HeaderText = "Datum";
+            this.datum.Name = "datum";
+            this.datum.ReadOnly = true;
             // 
             // krajBox
             // 
@@ -155,7 +189,7 @@ namespace MINIProjektUPB
             // 
             // urediButton
             // 
-            this.urediButton.Location = new System.Drawing.Point(542, 118);
+            this.urediButton.Location = new System.Drawing.Point(539, 40);
             this.urediButton.Name = "urediButton";
             this.urediButton.Size = new System.Drawing.Size(190, 85);
             this.urediButton.TabIndex = 16;
@@ -172,41 +206,39 @@ namespace MINIProjektUPB
             this.potrdiButton.Text = "Potrdi";
             this.potrdiButton.UseVisualStyleBackColor = true;
             // 
-            // id
+            // label1
             // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(328, 337);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(489, 25);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "VSE ANKETE, KI SO BILE POSLANE TEMU DIJAKU";
             // 
-            // naslov
+            // dodajAnketeDijaku
             // 
-            this.naslov.HeaderText = "Naslov";
-            this.naslov.Name = "naslov";
-            this.naslov.ReadOnly = true;
+            this.dodajAnketeDijaku.Location = new System.Drawing.Point(539, 203);
+            this.dodajAnketeDijaku.Name = "dodajAnketeDijaku";
+            this.dodajAnketeDijaku.Size = new System.Drawing.Size(190, 92);
+            this.dodajAnketeDijaku.TabIndex = 19;
+            this.dodajAnketeDijaku.Text = "Dodaj ankete dijaku";
+            this.dodajAnketeDijaku.UseVisualStyleBackColor = true;
+            this.dodajAnketeDijaku.Click += new System.EventHandler(this.dodajAnketeDijaku_Click);
             // 
-            // URL
+            // izbrisi
             // 
-            this.URL.HeaderText = "URL";
-            this.URL.Name = "URL";
-            this.URL.ReadOnly = true;
-            // 
-            // opis
-            // 
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            this.opis.ReadOnly = true;
-            // 
-            // datum
-            // 
-            this.datum.HeaderText = "Datum";
-            this.datum.Name = "datum";
-            this.datum.ReadOnly = true;
+            this.izbrisi.HeaderText = "Izbriši";
+            this.izbrisi.Name = "izbrisi";
+            this.izbrisi.ReadOnly = true;
             // 
             // podatkiodijaku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 618);
+            this.Controls.Add(this.dodajAnketeDijaku);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.potrdiButton);
             this.Controls.Add(this.urediButton);
             this.Controls.Add(this.label10);
@@ -216,13 +248,13 @@ namespace MINIProjektUPB
             this.Controls.Add(this.label6);
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.krajBox);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.anketeDijakGrid);
             this.Controls.Add(this.solaBox);
             this.Controls.Add(this.priimekBox);
             this.Controls.Add(this.imeBox);
             this.Name = "podatkiodijaku";
             this.Text = "podatkiodijaku";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anketeDijakGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +265,7 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TextBox imeBox;
         private System.Windows.Forms.TextBox priimekBox;
         private System.Windows.Forms.TextBox solaBox;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView anketeDijakGrid;
         private System.Windows.Forms.ComboBox krajBox;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label label10;
@@ -248,5 +280,8 @@ namespace MINIProjektUPB
         private System.Windows.Forms.DataGridViewTextBoxColumn URL;
         private System.Windows.Forms.DataGridViewTextBoxColumn opis;
         private System.Windows.Forms.DataGridViewTextBoxColumn datum;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button dodajAnketeDijaku;
+        private System.Windows.Forms.DataGridViewButtonColumn izbrisi;
     }
 }

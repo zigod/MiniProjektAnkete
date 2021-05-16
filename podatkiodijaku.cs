@@ -12,10 +12,12 @@ namespace MINIProjektUPB
 {
     public partial class podatkiodijaku : Form
     {
-        public podatkiodijaku()
+        public int ajdi;
+        public podatkiodijaku(int id_)
         {
             InitializeComponent();
             polnjenje();
+            ajdi = id_;
         }
 
         private void polnjenje()
@@ -30,6 +32,12 @@ namespace MINIProjektUPB
                 krajBox.Items.Add(skupi);
             }
 
+            List<Ankete> anketa = baza.izpisAnketDijak(ajdi);
+            //                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj, "Več" });
+            foreach (Ankete a in anketa)
+            {
+                anketeDijakGrid.Rows.Add(new object[] { a.id, a.naslov, a.url, a.opis, a.datum, "Izbriši" });
+            }
 
         }
 
@@ -43,18 +51,23 @@ namespace MINIProjektUPB
             urediButton.Enabled = false;
 
             /*CREATE OR REPLACE FUNCTION izpisAnketDijak(ajdi integer)
-            RETURNS TABLE(id_a integer, naslov_ varchar, url_ varchar, opis_ varchar)
+            RETURNS TABLE(id_a integer, naslov_ varchar, url_ varchar, opis_ varchar, datum_ timestamp)
             AS $$
             DECLARE
 
             BEGIN
             RETURN QUERY
-	        SELECT a.id, a.naslov, a.opis., a.url FROM poslane_ankete p INNER JOIN ankete a WHERE (p.dijak_id = ajdi);
+	        SELECT a.id, a.naslov, a.url, a.opis, p.datum FROM poslane_ankete p INNER JOIN ankete a ON p.anketa_id=a.id WHERE (p.dijak_id = ajdi);
+	
+	        END;
+            $$
+            LANGUAGE 'plpgsql'*/
+        }
 
-
-                END;
-                $$
-                LANGUAGE 'plpgsql'*/
+        private void dodajAnketeDijaku_Click(object sender, EventArgs e)
+        {
+            anketedijaka ank = new anketedijaka();
+            ank.ShowDialog();
         }
     }
 }

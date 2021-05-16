@@ -187,5 +187,57 @@ namespace MINIProjektUPB
                 return potrditev;
             }
         }
+
+        public static List<Ankete> izpisAnketDijak(int id_)
+        {
+            List<Ankete> anketeList = new List<Ankete>();
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpisAnketDijak(" + id_ + ");", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string naslov = reader.GetString(1);
+                    string url = reader.GetString(2);
+                    string opis = reader.GetString(3);
+                    string datum = reader.GetString(4);
+
+                    Ankete reading = new Ankete(id, naslov, url, opis, datum);
+
+                    anketeList.Add(reading);
+                }
+                con.Close();
+                return anketeList;
+            }
+        }
+
+        public static List<Ankete> izpisAnket()
+        {
+            List<Ankete> anketeList = new List<Ankete>();
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM prikazAnket()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0);
+                    string naslov = reader.GetString(1);
+                    string url = reader.GetString(2);
+                    string opis = reader.GetString(3);
+
+                    Ankete reading = new Ankete(id, naslov, url, opis);
+
+                    anketeList.Add(reading);
+                }
+                con.Close();
+                return anketeList;
+            }
+        }
+
     }
 }

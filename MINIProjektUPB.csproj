@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ankete.cs" />
+    <Compile Include="anketedijaka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="anketedijaka.Designer.cs">
+      <DependentUpon>anketedijaka.cs</DependentUpon>
+    </Compile>
     <Compile Include="baza.cs" />
     <Compile Include="Dijaki.cs" />
     <Compile Include="Kraji.cs" />
@@ -111,6 +117,9 @@
     <Compile Include="registracija.Designer.cs">
       <DependentUpon>registracija.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="anketedijaka.resx">
+      <DependentUpon>anketedijaka.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>
     </EmbeddedResource>
