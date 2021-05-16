@@ -14,7 +14,7 @@ namespace MINIProjektUPB
             byte[] data = Convert.FromBase64String(geslo);
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
-                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(geslo));
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
                 using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
                 {
                     ICryptoTransform transform = tripleDes.CreateDecryptor();
@@ -27,7 +27,7 @@ namespace MINIProjektUPB
         ////////////////////////////////////////7
         public static string kriptiraj(string geslo)
         {
-            byte[] data = UTF8Encoding.UTF8.GetBytes(geslo);
+            byte[] data = UTF8Encoding.UTF8.GetBytes(hash);
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
                 byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(geslo));
