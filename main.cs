@@ -77,7 +77,6 @@ namespace MINIProjektUPB
             string opis = opisBox.Text;
             Ankete anketa = new Ankete(naslov, URL, opis);
 
-            MessageBox.Show(naziv_);
             bool preveritev = baza.dodajAnketo(anketa.naslov, anketa.url, anketa.opis, naziv_);
             
             if (preveritev == false)
@@ -108,11 +107,21 @@ namespace MINIProjektUPB
             if(e.ColumnIndex == 6)
             {
                 int id = Convert.ToInt32(dijakiGridView.Rows[e.RowIndex].Cells[0].Value);
+                string ime = Convert.ToString(dijakiGridView.Rows[e.RowIndex].Cells[1].Value);
+                string priimek = Convert.ToString(dijakiGridView.Rows[e.RowIndex].Cells[2].Value);
+                string sola = Convert.ToString(dijakiGridView.Rows[e.RowIndex].Cells[3].Value);
+                string datum = Convert.ToString(dijakiGridView.Rows[e.RowIndex].Cells[4].Value);
+                string kraj = Convert.ToString(dijakiGridView.Rows[e.RowIndex].Cells[5].Value);
 
-                podatkiodijaku pod = new podatkiodijaku(id);
+                podatkiodijaku pod = new podatkiodijaku(id, ime, priimek, sola, datum, kraj);
                 pod.ShowDialog();
 
             }
+        }
+
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        {
+            polnjenje();
         }
     }
 }

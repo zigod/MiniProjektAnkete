@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using Npgsql;
+using System.Windows.Forms;
 
 namespace MINIProjektUPB
 {
@@ -203,7 +204,7 @@ namespace MINIProjektUPB
                     string naslov = reader.GetString(1);
                     string url = reader.GetString(2);
                     string opis = reader.GetString(3);
-                    string datum = reader.GetString(4);
+                    string datum = reader.GetTimeStamp(4).ToString(); 
 
                     Ankete reading = new Ankete(id, naslov, url, opis, datum);
 
@@ -214,14 +215,14 @@ namespace MINIProjektUPB
             }
         }
 
-        public static List<Ankete> izpisAnket()
+        public static List<Ankete> izpisAnket(int id_d)
         {
             List<Ankete> anketeList = new List<Ankete>();
             using (NpgsqlConnection con = new NpgsqlConnection(connect()))
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM prikazAnket();", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM prikazAnket(" + id_d + ");", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -246,7 +247,7 @@ namespace MINIProjektUPB
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM searchAnket('" + beseda + "', " + id_d + ");", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM anketesearch('" + beseda + "', " + id_d + ");", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -276,7 +277,23 @@ namespace MINIProjektUPB
                 {
                 }
 
+                com.Dispose();
 
+                con.Close();
+            }
+        }
+
+        public static void izbrisiAnketo(int id_a)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT izbrisiAnketo(" + id_a + ");", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                }
 
                 com.Dispose();
 
@@ -284,63 +301,46 @@ namespace MINIProjektUPB
             }
         }
 
-        /*CREATE OR REPLACE FUNCTION izpisAnketDijak(ajdi integer)
-RETURNS TABLE(id_a integer, naslov_ varchar, url_ varchar, opis_ varchar, datum_ timestamp)
-AS $$
-DECLARE
+        public static string SelectPostno(string kraj)
+        {
+            string postna = "";
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
 
-BEGIN
-RETURN QUERY
-	SELECT a.id, a.naslov, a.url, a.opis, p.datum FROM poslane_ankete p INNER JOIN ankete a ON p.anketa_id=a.id WHERE (p.dijak_id = ajdi);
-	
-	END;
-    $$
-    LANGUAGE 'plpgsql'
-         * -----------------------------------------------------------------------------------------------------------------------------------------
-         * CREATE OR REPLACE FUNCTION prikazAnket()
-RETURNS TABLE(id integer, naslov varchar, url varchar, opis varchar)
-AS $$
-DECLARE
+                NpgsqlCommand com = new NpgsqlCommand("SELECT SelectPostna('" + kraj + "');", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    postna = reader.GetInt32(0).ToString();
+                }
 
-BEGIN
-RETURN QUERY
-	SELECT a.id, a.naslov, a.url, a.opis FROM ankete a ;
+                com.Dispose();
 
+                con.Close();
+            }
+            return postna;
+        }
 
-END;
-$$
-LANGUAGE 'plpgsql'
-         *
-         *---------------------------------------------------------------------------------------------------------------------------------------
-         *CREATE OR REPLACE FUNCTION anketeSearch(beseda varchar, ajdi integer)
-RETURNS TABLE(id integer, naslov varchar, url varchar, opis varchar)
-AS $$
-DECLARE
+        public static void urediDijaka(int id, string ime, string priimek, string sola, string kraj, string postna_st, string datum)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect()))
+            {
+                con.Open();
+                //MessageBox.Show(id + " " + ime + " " + priimek + " " + sola + " " + kraj + " " + postna_st + " " + datum);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT UrediDijaka(" + id + ", '" + ime + "', '" + priimek + "', '" + sola + "', '" + kraj + "', '" + postna_st + "', '" + datum + "');", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                }
 
-BEGIN
-RETURN QUERY
-	SELECT a.id, a.naslov, a.url, a.opis FROM ankete a INNER JOIN poslane_ankete p ON a.id=p.anketa_id WHERE ((a.id LIKE beseda) OR (a.naslov LIKE beseda) OR (a.url LIKE beseda) OR (a.opis LIKE beseda)) AND (p.dijak_id != ajdi);
+                com.Dispose();
 
-END;
-$$
-LANGUAGE 'plpgsql'
-         *
-         *
-         *------------------------------------------------------------------------------------------
-         *CREATE OR REPLACE FUNCTION dodajAnketoDijaku(id_d integer, id_a integer, datum_ varchar)
-RETURNS VOID
-AS $$
-DECLARE
-
-BEGIN
-INSERT INTO poslane_ankete(dijak_id, anketa_id, datum)
-VALUES (id_d, id_a, CAST(datum_ AS timestamp));
+                con.Close();
+            }
+        }
 
 
-END;
-$$
-LANGUAGE 'plpgsql'
-         */
 
     }
 }

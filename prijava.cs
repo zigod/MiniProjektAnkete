@@ -23,6 +23,7 @@ namespace MINIProjektUPB
 
             string geslo = gesloTextBox.Text;
 
+            geslo = gesla.dekriptiraj(geslo);
 
             bool prijavljen = baza.prijava(gmail, geslo);
 

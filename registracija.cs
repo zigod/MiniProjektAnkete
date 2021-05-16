@@ -25,6 +25,8 @@ namespace MINIProjektUPB
 
             string geslo = gesloBox.Text.ToString();
 
+            geslo = gesla.kriptiraj(geslo);
+
             baza.registracija(naziv, mail, geslo);
 
             main main = new main(naziv);

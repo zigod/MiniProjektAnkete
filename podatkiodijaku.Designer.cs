@@ -38,6 +38,7 @@ namespace MINIProjektUPB
             this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.izbrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.krajBox = new System.Windows.Forms.ComboBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace MINIProjektUPB
             this.potrdiButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dodajAnketeDijaku = new System.Windows.Forms.Button();
-            this.izbrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.anketeDijakGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,6 +94,7 @@ namespace MINIProjektUPB
             this.anketeDijakGrid.Name = "anketeDijakGrid";
             this.anketeDijakGrid.Size = new System.Drawing.Size(856, 253);
             this.anketeDijakGrid.TabIndex = 4;
+            this.anketeDijakGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.anketeDijakGrid_CellContentClick);
             // 
             // id
             // 
@@ -124,6 +125,12 @@ namespace MINIProjektUPB
             this.datum.HeaderText = "Datum";
             this.datum.Name = "datum";
             this.datum.ReadOnly = true;
+            // 
+            // izbrisi
+            // 
+            this.izbrisi.HeaderText = "Izbriši";
+            this.izbrisi.Name = "izbrisi";
+            this.izbrisi.ReadOnly = true;
             // 
             // krajBox
             // 
@@ -200,12 +207,14 @@ namespace MINIProjektUPB
             // 
             // potrdiButton
             // 
+            this.potrdiButton.Enabled = false;
             this.potrdiButton.Location = new System.Drawing.Point(177, 272);
             this.potrdiButton.Name = "potrdiButton";
             this.potrdiButton.Size = new System.Drawing.Size(200, 50);
             this.potrdiButton.TabIndex = 17;
             this.potrdiButton.Text = "Potrdi";
             this.potrdiButton.UseVisualStyleBackColor = true;
+            this.potrdiButton.Click += new System.EventHandler(this.potrdiButton_Click);
             // 
             // label1
             // 
@@ -228,12 +237,6 @@ namespace MINIProjektUPB
             this.dodajAnketeDijaku.Text = "Dodaj ankete dijaku";
             this.dodajAnketeDijaku.UseVisualStyleBackColor = true;
             this.dodajAnketeDijaku.Click += new System.EventHandler(this.dodajAnketeDijaku_Click);
-            // 
-            // izbrisi
-            // 
-            this.izbrisi.HeaderText = "Izbriši";
-            this.izbrisi.Name = "izbrisi";
-            this.izbrisi.ReadOnly = true;
             // 
             // podatkiodijaku
             // 

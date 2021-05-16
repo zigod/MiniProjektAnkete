@@ -12,13 +12,27 @@ namespace MINIProjektUPB
 {
     public partial class podatkiodijaku : Form
     {
-        public int id_d;
-        public podatkiodijaku(int id_)
+        public podatkiodijaku(int id_, string ime_, string priimek_, string sola_, string datum_, string kraj_)
         {
             InitializeComponent();
-            polnjenje();
             id_d = id_;
+            ime = ime_;
+            priimek = priimek_;
+            sola = sola_;
+            DDatum = datum_;
+            Kraj = kraj_;
+            polnjenje();
+
         }
+
+        public int id_d;
+        public string ime;
+        public string priimek;
+        public string sola;
+        public string DDatum;
+        public string Kraj;
+
+        public string postna;
 
         private void polnjenje()
         {
@@ -32,7 +46,6 @@ namespace MINIProjektUPB
 
                 krajBox.Items.Add(skupi);
             }
-
             List<Ankete> anketa = baza.izpisAnketDijak(id_d);
             //                dijakiGridView.Rows.Add(new object[] { d.Id, d.Ime, d.Priimek, d.Sola, d.Datum, d.Kraj, "Več" });
             foreach (Ankete a in anketa)
@@ -40,6 +53,13 @@ namespace MINIProjektUPB
                 anketeDijakGrid.Rows.Add(new object[] { a.id, a.naslov, a.url, a.opis, a.datum, "Izbriši" });
             }
 
+            imeBox.Text = ime;
+            priimekBox.Text = priimek;
+            solaBox.Text = sola;
+            datePicker.Value = DateTime.Parse(DDatum);
+            postna = baza.SelectPostno(Kraj);
+            string skupno = Kraj + " | " + postna;
+            krajBox.SelectedItem = skupno;
         }
 
         private void urediButton_Click(object sender, EventArgs e)
@@ -50,6 +70,7 @@ namespace MINIProjektUPB
             krajBox.Enabled = true;
             datePicker.Enabled = true;
             urediButton.Enabled = false;
+            potrdiButton.Enabled = true;
 
             /*CREATE OR REPLACE FUNCTION izpisAnketDijak(ajdi integer)
             RETURNS TABLE(id_a integer, naslov_ varchar, url_ varchar, opis_ varchar, datum_ timestamp)
@@ -70,5 +91,41 @@ namespace MINIProjektUPB
             anketedijaka ank = new anketedijaka(id_d);
             ank.ShowDialog();
         }
+
+        private void anketeDijakGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                int id_a = Convert.ToInt32(anketeDijakGrid.Rows[e.RowIndex].Cells[0].Value);
+
+
+                baza.izbrisiAnketo(id_a);
+
+                polnjenje();
+            }
+        }
+
+        private void potrdiButton_Click(object sender, EventArgs e)
+        {
+            urediButton.Enabled = true;
+            potrdiButton.Enabled = false;
+
+            ime = imeBox.Text;
+            priimek = priimekBox.Text;
+            sola = solaBox.Text;
+            DDatum = datePicker.Value.ToString("yyyy-MM-dd");
+            string krajValue = (string)krajBox.SelectedItem;
+            string[] krajPosta = krajValue.Split(new string[] { " | " }, StringSplitOptions.None);
+
+            //MessageBox.Show(id_d + " " + ime + " " + priimek + " " + sola + " " + krajPosta[0] + " " + krajPosta[1] + " " + DDatum);
+            baza.urediDijaka(id_d, ime, priimek, sola, krajPosta[0], krajPosta[1], DDatum);
+
+            imeBox.Enabled = false;
+            priimekBox.Enabled = false;
+            solaBox.Enabled = false;
+            krajBox.Enabled = false;
+            datePicker.Enabled = false;
+
+        }   
     }
 }

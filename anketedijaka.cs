@@ -24,7 +24,7 @@ namespace MINIProjektUPB
         {
             anketeGrid.Rows.Clear();
 
-            List<Ankete> anketa = baza.izpisAnket();
+            List<Ankete> anketa = baza.izpisAnket(id_d);
 
             foreach (Ankete a in anketa)
             {
@@ -34,6 +34,7 @@ namespace MINIProjektUPB
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            anketeGrid.Rows.Clear();    
             List<Ankete> anketa = baza.searchAnket(searchBox.Text, id_d);
 
             foreach (Ankete a in anketa)
@@ -56,6 +57,14 @@ namespace MINIProjektUPB
             }
         }
 
+        private void anketedijaka_Load(object sender, EventArgs e)
+        {
+            polnjenje();
+        }
 
+        private void clearSearch_Click(object sender, EventArgs e)
+        {
+            polnjenje();
+        }
     }
 }
