@@ -33,10 +33,6 @@ namespace MINIProjektUPB
             this.priimekBox = new System.Windows.Forms.TextBox();
             this.solaBox = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.krajBox = new System.Windows.Forms.ComboBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
@@ -46,6 +42,11 @@ namespace MINIProjektUPB
             this.label6 = new System.Windows.Forms.Label();
             this.urediButton = new System.Windows.Forms.Button();
             this.potrdiButton = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naslov = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.URL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,36 +83,13 @@ namespace MINIProjektUPB
             this.id,
             this.naslov,
             this.URL,
-            this.opis});
+            this.opis,
+            this.datum});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 365);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(856, 253);
             this.dataGridView1.TabIndex = 4;
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // naslov
-            // 
-            this.naslov.HeaderText = "Naslov";
-            this.naslov.Name = "naslov";
-            this.naslov.ReadOnly = true;
-            // 
-            // URL
-            // 
-            this.URL.HeaderText = "URL";
-            this.URL.Name = "URL";
-            this.URL.ReadOnly = true;
-            // 
-            // opis
-            // 
-            this.opis.HeaderText = "Opis";
-            this.opis.Name = "opis";
-            this.opis.ReadOnly = true;
             // 
             // krajBox
             // 
@@ -194,6 +172,36 @@ namespace MINIProjektUPB
             this.potrdiButton.Text = "Potrdi";
             this.potrdiButton.UseVisualStyleBackColor = true;
             // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // naslov
+            // 
+            this.naslov.HeaderText = "Naslov";
+            this.naslov.Name = "naslov";
+            this.naslov.ReadOnly = true;
+            // 
+            // URL
+            // 
+            this.URL.HeaderText = "URL";
+            this.URL.Name = "URL";
+            this.URL.ReadOnly = true;
+            // 
+            // opis
+            // 
+            this.opis.HeaderText = "Opis";
+            this.opis.Name = "opis";
+            this.opis.ReadOnly = true;
+            // 
+            // datum
+            // 
+            this.datum.HeaderText = "Datum";
+            this.datum.Name = "datum";
+            this.datum.ReadOnly = true;
+            // 
             // podatkiodijaku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -226,10 +234,6 @@ namespace MINIProjektUPB
         private System.Windows.Forms.TextBox priimekBox;
         private System.Windows.Forms.TextBox solaBox;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn naslov;
-        private System.Windows.Forms.DataGridViewTextBoxColumn URL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn opis;
         private System.Windows.Forms.ComboBox krajBox;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.Label label10;
@@ -239,5 +243,10 @@ namespace MINIProjektUPB
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button urediButton;
         private System.Windows.Forms.Button potrdiButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naslov;
+        private System.Windows.Forms.DataGridViewTextBoxColumn URL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn opis;
+        private System.Windows.Forms.DataGridViewTextBoxColumn datum;
     }
 }

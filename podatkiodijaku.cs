@@ -40,7 +40,21 @@ namespace MINIProjektUPB
             solaBox.Enabled = true;
             krajBox.Enabled = true;
             datePicker.Enabled = true;
+            urediButton.Enabled = false;
 
+            /*CREATE OR REPLACE FUNCTION izpisAnketDijak(ajdi integer)
+            RETURNS TABLE(id_a integer, naslov_ varchar, url_ varchar, opis_ varchar)
+            AS $$
+            DECLARE
+
+            BEGIN
+            RETURN QUERY
+	        SELECT a.id, a.naslov, a.opis., a.url FROM poslane_ankete p INNER JOIN ankete a WHERE (p.dijak_id = ajdi);
+
+
+                END;
+                $$
+                LANGUAGE 'plpgsql'*/
         }
     }
 }
